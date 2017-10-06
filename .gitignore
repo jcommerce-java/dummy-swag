@@ -1,0 +1,8 @@
+.metadata/
+.recommenders/
+dummy-swag/.project
+dummy-swag/.settings/
+dummy-swag/generator/.classpath
+dummy-swag/generator/.settings/
+dummy-swag/target/
+RemoteSystemsTempFiles/

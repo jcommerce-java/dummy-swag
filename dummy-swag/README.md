@@ -1,0 +1,2 @@
+To configure authentication, so the code generator could connect to a secured Swagger API, add a header in the `auth` tag in the codegen plugin configuration in the `pom.xml` in the form of the BASIC authentication header:
+`Authorization: <base64 encoded user:password>`

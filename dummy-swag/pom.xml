@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pl.jcommerce</groupId>
+  <artifactId>dummy-swag</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>generator</module>
+  </modules>
+
+
+    <properties>
+        <inputSpec>http://petstore.swagger.io/v2/swagger.json</inputSpec>
+        <generatedCodeBasePackage>pl.jcommerce.dummy-swag</generatedCodeBasePackage>
+        <groupId>pl.jcommerce.dummy-swag</groupId>
+        <artifactId>swagger-codegen</artifactId>
+        <artifactVersion>0.0.1</artifactVersion>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>2.2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+                            <inputSpec>${inputSpec}</inputSpec>
+                            <auth></auth>
+                            <language>pl.jcommerce.dummyswag.generator.ServerStubWithDataCodegen</language>
+                            <apiPackage>${generatedCodeBasePackage}.api</apiPackage>
+                            <modelPackage>${generatedCodeBasePackage}.model</modelPackage>
+                            <groupId>${groupId}</groupId>
+                            <artifactId>${artifactId}</artifactId>
+                            <artifactVersion>${artifactVersion}</artifactVersion>
+                            <!--<templateDirectory>${project.basedir}/src/main/resources/templates</templateDirectory>-->
+                            <configOptions>
+                                <basePackage>${generatedCodeBasePackage}</basePackage>
+                                <configPackage>${generatedCodeBasePackage}.configuration</configPackage>
+                                <java8>true</java8>
+                            </configOptions>
+
+                            <output>${project.build.directory}/generated-sources</output>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>pl.jcommerce</groupId>
+                        <artifactId>generator</artifactId>
+                        <version>0.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
